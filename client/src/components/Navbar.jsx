@@ -7,7 +7,7 @@ import {
     Stack,
     Collapse,
     Icon,
-    Link,
+    
     Popover,
     PopoverTrigger,
     PopoverContent,
@@ -15,15 +15,20 @@ import {
     useBreakpointValue,
     useDisclosure,
   } from '@chakra-ui/react';
+  import { Link } from 'react-router-dom';
   import {
     HamburgerIcon,
     CloseIcon,
     ChevronDownIcon,
     ChevronRightIcon,
   } from '@chakra-ui/icons';
+  import { useContext } from 'react';
+  import { BlockchainContext } from '../context/Blockchaincontext';
+
   
   export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
+    const { connectWallet,currentAccount } = useContext(BlockchainContext);
   
     return (
       <Box>
@@ -45,7 +50,7 @@ import {
               color={useColorModeValue('gray.800', 'white')}
               fontWeight={900}
               fontSize={'x-Large'}>
-              BikeChain
+             <Link to ="/">BikeChain</Link> 
             </Text>
   
             
@@ -58,6 +63,7 @@ import {
             spacing={6}>
            
             <Button
+            onClick={connectWallet}
               display={{ md: 'inline-flex' }}
               fontSize={'sm'}
               fontWeight={600}
@@ -67,7 +73,7 @@ import {
               _hover={{
                 bg: 'orange.300',
               }}>
-              Connect Walllet
+              {!currentAccount ? "Connect Wallet" :`${currentAccount.slice(0,5)}...${currentAccount.slice(currentAccount.length - 4)}`}
             </Button>
           </Stack>
         </Flex>
