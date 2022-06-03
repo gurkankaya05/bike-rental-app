@@ -117,7 +117,7 @@
               "type": "address"
             }
           ],
-          "name": "chechkOut",
+          "name": "checkOut",
           "outputs": [],
           "stateMutability": "nonpayable",
           "type": "function"

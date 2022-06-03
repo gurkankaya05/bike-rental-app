@@ -22,6 +22,7 @@ module.exports = {
     testnet:{
       url: process.env.URL,
       accounts:[process.env.ACCOUNTS],  
+      
     }
 
 

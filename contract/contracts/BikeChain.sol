@@ -25,7 +25,7 @@ contract BikeChain {
     function addRenter(address payable walletAdress,   string memory firstName,  string memory lastName, bool canRent, bool active, uint balance, uint due, uint start, uint end) public {
         renters[walletAdress] = Renter(walletAdress,firstName,lastName,canRent,active,balance,due,start,end);
     }
-    function chechkOut(address walletAdress) public {
+    function checkOut(address walletAdress) public {
         require(renters[walletAdress].due == 0, "You have a pending balance");
         require(renters[walletAdress].canRent == true, "You cannot rent at this time");
         renters[walletAdress].active = true;
